@@ -71,7 +71,9 @@ var ws=new WebSocket("ws://localhost:3000/talkplace");
 ws.onmessage=function(message){
   console.log(message.data);
 };
-ws.send("hello world");
+ws.onopen=function(){
+  ws.send("hello world");
+};+
 ```
 
 上面的代码在客户端运行,生成监听,当由信息来临的时候,输出信息;

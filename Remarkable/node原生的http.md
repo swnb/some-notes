@@ -13,6 +13,6 @@ let server1=htpp.createServer(function(request,response){
   response.end('strng');
   fs.createReadStream('./index.html','utf-8').pipe(response);
   
-})
+}).listen(80);
 ```
 

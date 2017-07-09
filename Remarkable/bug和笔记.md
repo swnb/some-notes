@@ -191,5 +191,111 @@ test('');
 
 
 
+***
+
+js的基本类型：
+
+number , null , string , boolean , undefined
+
+object(Array,Date,RegExp,Function)
+
+```javascript
+var undefined;
+undefined == null; // true
+1 == true;   // true
+2 == true;   // false
+0 == false;  // true
+0 == '';     // true
+NaN == NaN;  // false
+[] == false; // true
+[] == ![];   // true
+```
 
 
+
+变量提升和函数提升
+
+```javascript
+console.log(a);//undefined,不会报错
+var a=1;
+console.log(a);//1
+//等价下面的语句
+var a;
+console.log(a);
+a=1;
+console.log(a);
+```
+
+ 函数提升有一点不同：
+
+```javascript
+a();//throw error
+var a=function(){
+  console.log(1)
+}
+a();//1
+var a=function(){
+console.log(2);
+}
+a();//2
+```
+
+不同之处在于,a的提前声明会报错的，因为这是一个函数;
+
+***函数声明就完全不同了，只有一个函数，没有重写***
+
+但是如果是函数表达式而言：
+
+```javascript
+var a=function(){
+  console.log(1);
+}
+a();//1
+function a(){
+  console.log(2);
+}
+a();//1
+```
+
+
+
+***
+
+dconf-tools 一个好用的工具;
+
+***
+
+对于编写的规则，如果 border想要设置成为没有就要设置border-left:0;
+
+不要设置成为none;兼容考虑;
+
+border-radius是有8个值的;
+
+***
+
+原生的方法遍历子节点：childNodes返回一个对象的集合，对于这个对象的集合是一个数组，可以通过原生的forEach函数来遍历这集合，然后在集合中对与这个元素来判断这个元素的名称，例如nodeName，className 或者id来看标签属性。他拥有原生节点的特性;
+
+对于遍历的方法有很多种，比如 nodeType===1来确定他是一个节点元素
+
+而对于动态 生成的 元素需要优化，也就是createFragment()来包含这个元素，因为他的特性，将子孙节点给到页面， 避免重绘.
+
+***
+
+生成随机数：
+
+```javascript
+let num=Math.floor(Math.random()*n);
+//0-n的整数;
+```
+
+***
+
+关于原生js的遍历,document会将节点包括文本节点包括"空格"在内部,然后在遍历的时候会发生错误,所以需要遍历的是使用chidren[n]这样的属性.建议不要使用childnodes这样的属性.所以还是不需要了.
+
+***
+
+### 选择defer还是async
+
+`defer`与`async`的区别是：前者要等到整个页面正常渲染结束，才会执行；后者一旦下载完，渲染引擎就会中断渲染，执行这个脚本以后，再继续渲染。一句话，`defer`是“渲染完再执行”，`async`是“下载完就执行”。另外，如果有多个`defer`脚本，会按照它们在页面出现的顺序加载，而多个`async`脚本是不能保证加载顺序的。
+
+从上面的说法来看，最好选择的是defer而不是async
