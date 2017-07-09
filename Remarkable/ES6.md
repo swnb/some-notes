@@ -444,3 +444,32 @@ a(1,2,3,4,5)
 const a => a*a => 
 ```
 
+***
+
+## class和extends
+
+在extends里面如果要实现constructor的this调用需要
+
+使用super函数,举例
+
+```javascript
+class old{
+  constructor(x,y){
+    this.x=x;
+    this.y=y;
+  }
+}
+class n{
+	constructor(x,y,color){
+		super(x,y)//实例化原型的x,y参数,所以->不使用super,不能调用this
+        this.color=color;
+    }
+}
+```
+
+>### super()等价于A.prototype.constructor.call(this)
+
+这个是重点,有助于理解super这个值
+
+
+

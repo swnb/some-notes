@@ -162,3 +162,35 @@ var d=Object.create(a);
 d.c();//这个会报错，因为没有原型链继承e的问题;
 ```
 
+***
+
+真正的原型是`__proto__`, 看下面的代码你就明白了,prototype是没有实质的作用
+
+```javascript
+let a={}
+a.prototype={
+  ret:()=>{
+    return 1
+  }
+}
+a.ret() //undefind
+
+let a1=new a(); //使用new实例化才能找到
+a1.ret() //1
+
+a.__proto__={//__proto__不需要实例化
+  ret:()=>{
+    return 1
+  }
+}
+a.ret() //1
+
+
+//new的过程就是将prototype赋值给proto的过程
+let Parent=function(){
+  
+}
+let child=new Parent()
+child.__proto__===Parent.prototype//true
+```
+

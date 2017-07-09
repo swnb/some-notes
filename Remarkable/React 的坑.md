@@ -133,7 +133,26 @@ let t=React.createClass({
 })
 ```
 
-上面的代码实现的
+上面的代码实现的是属性的转换
+
+***
+
+ ### 官方文档
+
+先生成 一个react项目 create-react-app
+
+```shell
+npm install -g create-react-app
+create-react-app my-app
+cd my-app
+npm start
+```
+
+新版本react是推荐使用下面的方法class继承`React.Component`对象的方法去编写组件
+
+同时state的初始值不再使用`getInitialState` 而是直接在constriuctor里面使用this.state来设置它的值
+
+
 
 
 
