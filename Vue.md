@@ -679,7 +679,103 @@ new Vue({
 
 ## 非父子关系的组件之间的通信
 
-vue官方给的例子是通过一个Vue实例来做中间人
+vue官方给的例子是通过一个空Vue实例来做中间人
+
+举个例子
+
+```javascript
+let vm=new Vue();
+
+Vue.component('broone',{
+  template:"<input type='text' v-model='val' v-on:input='changeVal'>",
+  data(){
+    return {val:'value'}
+  },
+  methods:{
+    changeVal(){
+      vm.$emit('changeVal',this.val);
+    }
+  }
+});
+Vue.component('brotwo',{
+  template:"<input type='text' v-model='val' >",
+  data(){
+    return {val:'value'}
+  },
+  created(){
+      vm.$on('changeVal',(v)=>{this.val=v})    //箭头函数
+  }
+})
+```
+
+> 细心的同学就会发现,上面的代码巧妙的利用了箭头函数的作用域(这里不再说明,可以把箭头函数换成匿名函数试试);还有created是生命周期函数,在函数实例化后调用,箭头函数在当前就会绑定好作用域,不会变化,当然,上面的方法还是不好.建议使用vuex
+
+***
 
 
 
+## slot
+
+ 首先讲讲vue的作用域,来看实例:
+
+```html
+<hello>{{message}}</hello>
+上面的message的值是父亲组件控制的
+```
+
+我们肯定会遇到这样的情况
+
+```html
+<hello>
+  <p>
+    hello world
+  </p>
+</hello>
+```
+
+在自定义的组件内部使用其他的组件,这时候slot就有用了:
+
+```html
+<hello>
+<P>HELLO WORLD</P>
+</hello>
+
+template:`<div>
+  <input typd='text'>
+  <slot>
+    <p>this is hello world</p>
+  </slot>
+</div>`
+```
+
+在模板内使用slot,当调用组件时候传入dom对象就用他取代slot,否则就继续使用原本内容.
+
+上面的渲染结果是这样的
+
+```html
+<div>
+	<input type='text'/>
+	<p>HELLO WORLD</p>
+</div>
+```
+
+#### slot的name属性
+
+如果要特别对应相应的部分
+
+```html
+<!--child-->
+<div>
+	<slot name='header'></slot>
+  	<slot name='body'></slot>
+</div>
+
+<!--parent-->
+<child>
+	<p slot='header'>hello</p>
+</child>
+```
+
+到这里通讯就讲完了
+
+3个api --  props events slot
