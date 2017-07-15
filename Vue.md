@@ -483,7 +483,7 @@ data:{
 }
 ```
 
-#### 双向绑定可以用js的`Object.defineProperty()`和`onkeyup`来实现,有兴趣可以自己试试
+#### 双向绑定可以用js的`Object.defineProperty()`和`oninput`来实现,有兴趣可以自己试试
 
 ***
 
@@ -491,7 +491,7 @@ data:{
 
 ## 组件
 
-组件是vue|react最重要的部分了.
+组件是vue最重要的部分了.
 
 下面详细讲解组件
 
@@ -529,16 +529,14 @@ vue在html标准化后才会获得模板
 </tabel>
  <!--
 上面的代码报错
-因为table不会解析vue-template
+因为table内部不会解析vue-template
 Vue也就获得不到模板
 -->
 ```
 
-所以针对上面的问题,有两个解决办法
+针对上面的问题,解决办法
 
-1.将el挂载在组件上
-
-2.使用is属性,例如`<table> <tr is='vue-template'> </tr> </table>`
+使用is属性,例如`<table> <tr is='vue-template'> </tr> </table>`
 
 ***
 
@@ -548,7 +546,7 @@ Vue也就获得不到模板
 
 vue的官网用了一个形象的说法来说明这个问题:`emit up props down`
 
-之前我介绍过关于props的传递属性,
+之前我介绍过props的传递属性,
 
 值得注意的是,这个传递是单向的,也就是父亲可以改变儿子的属性,儿子改变是不可以也不建议传递到父组件的
 
@@ -676,4 +674,12 @@ new Vue({
 ### 上面就是父子组件通信的内容,总结起来就是`props down emit up `
 
 ***
+
+
+
+## 非父子关系的组件之间的通信
+
+vue官方给的例子是通过一个Vue实例来做中间人
+
+
 
