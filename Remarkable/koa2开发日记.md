@@ -104,12 +104,11 @@ app.listen(8080);
     		fs.unlink(path)//删除文件
     })
     //要注意filename要和前端的表单元素的name一致
-
 ```
 
  一定要看 [ 重点](https://stackoverflow.com/questions/31530200/node-multer-unexpected-field)
 
-还是使用
+再使用
 
 ***
 

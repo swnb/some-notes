@@ -299,3 +299,9 @@ let num=Math.floor(Math.random()*n);
 `defer`与`async`的区别是：前者要等到整个页面正常渲染结束，才会执行；后者一旦下载完，渲染引擎就会中断渲染，执行这个脚本以后，再继续渲染。一句话，`defer`是“渲染完再执行”，`async`是“下载完就执行”。另外，如果有多个`defer`脚本，会按照它们在页面出现的顺序加载，而多个`async`脚本是不能保证加载顺序的。
 
 从上面的说法来看，最好选择的是defer而不是async
+
+***
+
+## safar不能同时flex和background-clip
+
+可能是因为-webkit 的问题
