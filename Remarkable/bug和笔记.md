@@ -305,3 +305,9 @@ let num=Math.floor(Math.random()*n);
 ## safar不能同时flex和background-clip
 
 可能是因为-webkit 的问题
+
+***
+
+## for (x in array)
+
+在不设置length的情况下是不遍历length，但是属性是字符串类型。
