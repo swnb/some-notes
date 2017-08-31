@@ -5,10 +5,14 @@
 #### 转换
 
 ```javascript
+//单值
+Rx.Observable.just('a')
 //多个值
-Rx.observable.of('first','second')
+Rx.Observable.of('first','second')
 //数组
 Rx.Observable.from(['first','second'])
+//json转成map
+Rx.Observable.pairs(['first','second'])
 //将事件源转成流
 Rx.Observable.fromEvent(eventSource,'eventType')
 //Promise转换成为流
@@ -17,6 +21,14 @@ Rx.Observable.fromPromise(fetch('/user'))
 Rx.Observable.bindCallback(fs.exists)（path）.subscribe(flag=>{
     console.log(flag)
 })
+
+//时间生成
+.interval(1000)
+//序列生成
+.range(n,count)  //n,n+1,....,n+count-1
+//延时周期生成
+.timer(firstDelay,afterDelay) //0,1,2,3,4,5,6,7.....
+
 ```
 
 #### 生成
