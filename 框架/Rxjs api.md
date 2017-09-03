@@ -63,10 +63,10 @@ let a=Rx.Observable.fromEvent(event,'type')
 a.map(event=>event.target.value*2)
 .subscribe(result=>console.log(result))
 
-a.pluck('attr1','attr2','attr3')//得到属性值，一个个遍历 ，真的强大
-a.parwise() //一次传输两个流为一个数组，。也就是说输出的数据包含前一个数据 强大
-a.distinct()//传输的全部数据被去重，也就是说前面数据会被记录下来
-a.distinctUntilChanged() //相邻的数据去重
+a.pluck('attr1','attr2','attr3')	//得到属性值，一个个遍历，真的强大
+a.pairwise() 	//一次传输两个流为一个数组，也就是说输出的数据包含前一个数据,强大
+a.distinct()	//传输的全部数据被去重，也就是说前面数据会被记录下来
+a.distinctUntilChanged() 	//相邻的数据去重
 ```
 
 ### 意义是什么
