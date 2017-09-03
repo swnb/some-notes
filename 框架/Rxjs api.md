@@ -28,7 +28,6 @@ Rx.Observable.bindCallback(fs.exists)（path）.subscribe(flag=>{
 .range(n,count)  //n,n+1,....,n+count-1
 //延时周期生成
 .timer(firstDelay,afterDelay) //0,1,2,3,4,5,6,7.....
-
 ```
 
 #### 生成
@@ -47,7 +46,7 @@ e.filter(event=>event,target.value.length>100)
 .subscribe(data=>{
     console.log(data)
 })
-
+e.switchMap((event)=>Rx.Observable.fromEvent(someevent,'type'))//生成事件流
 e.delay(1000) //延时
 e.throttleTime(1000) //设置数据流量
 e.debounceTime(200) //去抖动
