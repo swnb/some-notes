@@ -64,7 +64,6 @@ let vm=new Vue({
   //记住这两个api 一个是     'abc'.charCodeAt(index)
   //另一个是			String.fromCharCode(num);
 </script>
-
 ```
 
 
@@ -149,7 +148,7 @@ computed:{
   </style>
 </head>
 <hello v-bind:class='{active:isactive}'></hello>
-<hain v-bind:class='classObject'></hai>
+<hai v-bind:class='classObject'></hai>
 <script>
 new Vue({
   el:'hello',
