@@ -38,7 +38,7 @@ let vm=new Vue({
 
 ## 计算属性和computed之间的对比
 
-```html
+```php+HTML
 <div>
   {{message}} 
   {{message.split('').reverse().join('')}}
@@ -138,7 +138,7 @@ computed:{
 
 ### class 对象语法
 
-```html
+```php+HTML
 <head>
   <style>
  	.active{
@@ -207,7 +207,7 @@ data:{
 数据就这么写
 -->
 data:{ 
-	x:'red'
+	x:'1px'
 }
 ```
 

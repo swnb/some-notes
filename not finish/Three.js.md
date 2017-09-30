@@ -58,6 +58,7 @@ render有一个domElemet属性，这个属性可以渲染到网页页面上
 
 ```javascript
 import * as T from "three";
+
 function init(tag = document.body) {
   let [w, h] = [window.innerWidth, window.innerHeight];
   const scene = new T.Scene();
@@ -100,7 +101,6 @@ function run() {
 let render = run();
 
 render();
-
 ```
 
 **上面代码是规范后的实现，还是很直观的**
