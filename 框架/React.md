@@ -17,3 +17,63 @@
   * key
 
     * 性能的优化
+
+***
+
+jsx里面，函数就可以表示组件
+
+```jsx
+function A(props){
+  return <h1>hello world{props.name}</h1>
+}
+
+render(<A name='zhang'/>,html.body)
+```
+
+对于state只能class去创建组件，对于组件，下面是一个标准的例子，很多地方值得深思。
+
+```javascript
+class Clock extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {date: new Date()};
+  }
+
+  componentDidMount() {
+    this.timerID = setInterval(
+      () => this.tick(),
+      1000
+    );
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+
+  tick() {
+    this.setState({
+      date: new Date()
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Hello, world!</h1>
+        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <Clock/>,
+  document.getElementById('root')
+);
+```
+
+### 使用setState更新ui
+
+但是如果需要根据之前的state进行更新，那么就不能直接使用`setState({})`,需要使用`setState((preState,props)=>{})`
+
+> setState({})是异步是什么意思？ui先更新，之后呢，再设置state，这个时候state是多少就不知道了。。所以根据preState来计算新的值，也就是说使用函数，这很巧妙
