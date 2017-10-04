@@ -77,3 +77,34 @@ ReactDOM.render(
 但是如果需要根据之前的state进行更新，那么就不能直接使用`setState({})`,需要使用`setState((preState,props)=>{})`
 
 > setState({})是异步是什么意思？ui先更新，之后呢，再设置state，这个时候state是多少就不知道了。。所以根据preState来计算新的值，也就是说使用函数，这很巧妙
+
+### 事件的问题
+
+```jsx
+this.clickHandle=this.clickHandle.bind(this)
+```
+
+如果子组件调用父亲组件的方法，那么一般方法就是
+
+```jsx
+//parent
+<Child onClick={this.change}>
+//child
+function Child(props){
+    <a onClick={props.onClick}></a>
+}
+```
+
+### 数组和key
+
+数组使用很简单[<a>link</a>,<b></b>,<i></i>]
+
+一般要循环生成的元素是需要keys的属性，用来给react标识这个元素是独一无二的，用于diff算法优化dom重绘制。
+
+### this.props.children
+
+类是<slot></slot>
+
+### ref
+
+ref={element=>{this.element=element}}
