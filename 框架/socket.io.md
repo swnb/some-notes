@@ -21,7 +21,7 @@ const io=require('socket.io')
 const io=require('socket.io-client')
 ```
 
-作为确认是否收到信息
+回调
 
 ```javascript
 //client
