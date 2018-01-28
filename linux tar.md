@@ -18,4 +18,6 @@ tar -cvf name.tar  *.go //打包所有的golang文件为name.tar
 tar -xvf name.tar
 ```
 
-之后使用zip或者gzip压缩
+之后使用bzip2或者gzip压缩的就要使用参数
+* -z gz的包
+* -j bz2的包
