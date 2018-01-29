@@ -354,3 +354,15 @@ go proce(c)
 z:= <-c
 ```
 
+***
+
+交叉编译
+
+```shell
+ env CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build
+```
+> 	GOOS = linux, darwin, freebsd, windows  
+	GOARCH = amd64, 386
+	CGO_ENABLED=1,0
+	GOROOT_BOOTSTRAP=/usr/local/go/
+	GOROOT=/usr/local/go
