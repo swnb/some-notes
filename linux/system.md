@@ -6,3 +6,6 @@
 
     pkill -9 -t [tty2/pst]
 ```
+
+
+`nice -n [NUMBER]` `renice`
