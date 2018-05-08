@@ -1,4 +1,4 @@
-# 神编程 rx.js 响应编程
+# 编程 rx.js 响应编程
 
 
 
@@ -16,7 +16,7 @@
 观察者
 
 ```javascript
-const rx=require('rx)
+const rx=require('rx')
 rx.Observable.fromEvent(eventSource,'eventType')
 .subscribe(()=>{
     console.log('event end')
@@ -25,7 +25,7 @@ rx.Observable.fromEvent(eventSource,'eventType')
 
 rx能实现强大的函数编程语法
 ```javascript
-const rx=require('rx)
+const rx=require('rx')
 rx.Observable.fromEvent(eventSource,'eventType')
 .scan(count=>count+1,1)
 .subscribe(count=>{
