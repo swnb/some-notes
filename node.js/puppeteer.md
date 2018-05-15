@@ -1,7 +1,7 @@
 # puppeteer
 
-这是一个无界面chrome的调试工具
 
+这是一个无界面chrome的调试工具
 代码如下
 
 ```javascript
@@ -23,8 +23,8 @@ const puppeteer = require('puppeteer')
 
 function errHandle(err) {
     console.log(`err-->> ${err}`)
-}
 
+}
 const main = async () => {
     const browser = await puppeteer.launch({
         headless: true
@@ -58,11 +58,11 @@ const main = async () => {
             }
         })
     })
+}
     await page.screenshot({
         path: './tmp.png'
     }).catch(errHandle)
     await page.close()
-}
 
 
 module.exports = main
