@@ -63,3 +63,24 @@ proc fn(name:string)=
     echo name
 ```
 你输入什么他输出什么。。。这么强么
+
+当你使用`sequtils`，你可以调用filter等方法
+
+当你使用`future`,你可以使用(x:int)->bool=>x mod 2 !=0 
+
+类型推断，你可以不说类型，让程序去推断他的类型
+x => x mod 2 !=0 
+
+函数作为参数
+
+```nim
+proc fn(val:auto,vail:(x:int)->bool)=
+    if vail(val):echo val
+    else:echo "wrong type"
+
+proc vail(x:auto):bool=
+    if x>10:
+        return true
+    else:
+        return false
+```
