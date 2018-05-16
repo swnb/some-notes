@@ -23,4 +23,43 @@ let const 表示一个常量，但是，const在编译过程就要确定，不�
 命名的不敏感，对于`toUpperAscii()`还是`to_upper_ascii()`都一样
 
 
-多类的使用
+多类型的使用
+
+`var`可以声明一个变量
+
+
+这上面已经很神奇了，下面介绍下神奇的函数
+
+参数
+
+```nim
+proc fn=echo nil
+
+proc fn(arg:string|int)=echo arg #多个类型自己判断
+
+proc fn(arg="auto")=echo arg #默认
+
+```
+
+返回
+ ```nim
+
+proc fn :auto= # 自定义返回
+    return 1
+
+proc fn:auto=
+    result='aa'
+
+proc fn:auto=
+    'a'&'b
+ ```
+
+ 巨牛的重新载入
+
+```nim
+proc fn(age:int)=
+    echo age
+proc fn(name:string)=
+    echo name
+```
+你输入什么他输出什么。。。这么强么
