@@ -84,3 +84,56 @@ proc vail(x:auto):bool=
     else:
         return false
 ```
+数组
+
+nim的数组是可以不用从0开始的
+```nim
+var arr: array[-10..-9,int]
+```
+
+```nim
+var lists=["a","b","c"]
+for item in lists:
+    echo item
+
+for i in lists.low..lists.high:
+    echo lists[i]
+```
+
+关于集合
+
+首先，类型你要判断好。
+```nim
+var seqs = @[]
+var seqs: seq[int] 
+```
+上面的代码不行，因为第一个你没说明类型，第二个你没说明类型的实际数据，你只是声明了nil对象，赋予值的过程是初始化，必须要有
+
+set可以没有初始化，但是必须要是数值做排序
+```nim
+var sets: set[int16]
+assert sets=={}
+```
+
+case of 不允许相同的值，只能一个一个的of
+
+raise newException(IOError,"io error") 抛出异常
+
+
+解构tunple
+```nim
+var aaa : tuple[x,y: int]
+
+type 
+    aaaa = tuple[x,y:int]
+
+
+aaa= (x:10,y:22)
+
+let asads:aaaa=(23,32)
+let asasa:aaaa=(x:32,y:32)
+
+let (x,_)=asads
+let (_,y)=asads
+echo x,y 
+```
