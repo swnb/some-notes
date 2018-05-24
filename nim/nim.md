@@ -147,3 +147,13 @@ spawn 并不会异步执行，但是他会创建一个线程来监听当前的�
 
 
 nim的异步函数的解释是使用了poll的方式，500ms的延迟，但是为什么不实用epoll这种方式
+
+
+nim的标准库介绍如下所示：
+
+    nim的命名空间规范如下
+    如果你使用了`from  sequtils import filter`
+    那么你可以使用filter，但是，当你要使用其他的方法，必须制定名`sequtils.filter`
+    同理`import sequtils except filter` 加上名称也是有用的.
+
+
