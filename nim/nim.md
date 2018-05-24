@@ -173,3 +173,11 @@ e "a"
 `substr`将一个字符串截取出来一个位置-substr(1,2)
 
 开始将`tables`模块
+
+```nim
+import tables
+
+let hashdata=totable[string,int]({
+    "sasa":1
+})
+```
