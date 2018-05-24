@@ -156,4 +156,20 @@ nim的标准库介绍如下所示：
     那么你可以使用filter，但是，当你要使用其他的方法，必须制定名`sequtils.filter`
     同理`import sequtils except filter` 加上名称也是有用的.
 
+```nim
+proc e(name:string)=echo name 
 
+e "a"
+"a".e
+"a".e()
+```
+
+除了 `$`符号之外，还有repr 这种方法对应所有的类型都可以字符串格式化。
+
+对于`quit`退出并且报错`code`
+
+`for x in items([1,2])：echo x`可以将一个可迭代对象迭代出来
+
+`substr`将一个字符串截取出来一个位置-substr(1,2)
+
+开始将`tables`模块
