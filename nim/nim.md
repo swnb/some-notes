@@ -181,3 +181,14 @@ let hashdata=totable[string,int]({
     "sasa":1
 })
 ```
+
+哈希
+```nim
+import hashes
+#计算hash
+"ddvcd".hash
+#保证hash的唯一性
+!$Hash()  #!$对hHash类型有效
+```
+
+set一般只能用几种类型作为元素，但是可以用hash的方式加入其他类型
