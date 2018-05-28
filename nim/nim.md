@@ -200,3 +200,21 @@ import os
 getHomeDir() / "file.txt"
 join_path(getHomeDir(),"file.txt")
 ```
+
+walkfile
+
+```nim
+import os
+for kind,path of walkDir(getHomeDir()):
+    case kind:
+        of pcDir:
+            echo path
+        of pcFile:
+            echo path
+```
+
+arg
+
+```nim
+
+```
