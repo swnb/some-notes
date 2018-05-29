@@ -216,5 +216,16 @@ for kind,path of walkDir(getHomeDir()):
 arg
 
 ```nim
-
+import parseOpt
+for kind,key,val in getopt():
+    case kind:
+        of cmdShortOption:
+            echo "short option"&key&val
+        of cmdEnd:
+            echo "end"
+            break
+        of cmdArgument:
+            echo "arg"&key&val
+        of cmdLongOption:
+            echo "cmd long"&key&val
 ```
