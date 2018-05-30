@@ -11,3 +11,5 @@ task(command,"run command for you work"):
 
     setCmmand("nop")
 ```
+
+这样的配置文件是很便捷的，只需要在这个文件目录下写入`nim command`就行了
