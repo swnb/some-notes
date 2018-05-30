@@ -138,5 +138,6 @@ var thread:array[2,Thread[string]]
 
 createThread(thread[0],change,data)
 
-createThread(thread[0],change,data)
+createThread(thread[1],change,data)
 
+joinThreads(thread)
