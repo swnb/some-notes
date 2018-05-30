@@ -229,3 +229,9 @@ for kind,key,val in getopt():
         of cmdLongOption:
             echo "cmd long"&key&val
 ```
+
+python 和 ruby 多线程都不能在多核心上运行，只能在一个核心上，但是多进程是可以的，但是进程的开销是十分大的，这个是非常不合适的，这也就是为什么 golang 可以脱颖而出。
+
+nim 对于多线程采用了内存独立的方式来避免竞争锁，这是好还是不好，我就不得而知了。
+
+下面我会分别用 spawn 和 threads 模块来进行计算，判断一下 cpu 的使用和实际运行时间，内存情况
