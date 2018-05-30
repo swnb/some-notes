@@ -1,6 +1,8 @@
 import future
 import strutils
 import sequtils
+import os
+
 var a = "asabda"
 echo a.to_upper_ascii()
 
@@ -125,4 +127,16 @@ let asasa:aaaa=(x:32,y:32)
 let (x,_)=asads
 let (_,y)=asads
 echo x,y
+
+let data="threads"
+
+proc change(param:string)=
+    for i in 0..<param.len:
+        echo param[i]
+
+var thread:array[2,Thread[string]]
+
+createThread(thread[0],change,data)
+
+createThread(thread[0],change,data)
 
