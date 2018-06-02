@@ -134,7 +134,7 @@ proc change(param:string)=
     for i in 0..<param.len:
         echo param[i]
 
-var thread:array[2,Thread[string]]
+var thread:seq[Thread[string]]
 
 createThread(thread[0],change,data)
 
