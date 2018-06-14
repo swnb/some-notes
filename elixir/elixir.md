@@ -211,3 +211,76 @@ Map.get(map,:a)
 Map.to_list(map)
 
 当映射的 key 都是原子的时候,那么就可以直接写 %{a: 1,b: 2}
+
+# module
+
+```elixir
+defmodule Math do
+    def sum([],sumres) do
+        sumres
+    end
+    def sum([head|tail]) do
+        sum(tail,head+sumres)
+    end
+end
+```
+
+1..1000|>Enum.map(&(&1+3))
+
+Stream 和 Enum 模块()
+
+//之后要好好研究这一部分的代码，stream 和 enum
+
+### 进程 processes
+
+spawn 衍生进程，类似 golang，生成了一个子进程
+
+spawn fn -> 1+2 end
+
+-> PID
+
+process
+
+Process.alive(PID)
+
+self
+
+-> id
+
+// 有了 send 就可以直接接受数据调度，这个是比 go 好的
+
+send
+
+send PID(self), {:hello,"zah"}
+
+recive do
+{:hello,msg}->msg
+after
+1000->"end"
+end
+
+### Alias require import
+
+alias Math.List as: List===alias Math.List
+
+> 在函数里面使用有局限性
+
+require // 前缀
+
+import // 可以无前缀
+
+### 大致的类型
+
+```elixir
+Atom
+BitString
+Float
+Function
+Integer
+List
+Map
+PID
+Port
+Reference
+Tuple
+```
