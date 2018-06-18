@@ -285,4 +285,24 @@ Reference
 Tuple
 ```
 
-###
+### protocol
+
+```elixir
+defprotocol Blank do
+  @doc "return the data is blank or not"
+  def blank?(data)
+end
+
+defimpl Blank,for: List do
+  def blank?(_) do
+    false
+  end
+end
+
+defimpl Blank, for: Integer  do
+  def blank?(_) do
+    false
+  end
+end
+IO.puts Blank.blank?(1)
+```
