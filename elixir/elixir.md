@@ -306,3 +306,7 @@ defimpl Blank, for: Integer  do
 end
 IO.puts Blank.blank?(1)
 ```
+
+```elixir
+for n<-[1,2,3,4],do: n*n
+```
