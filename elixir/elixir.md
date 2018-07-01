@@ -212,13 +212,12 @@ Map.to_list(map)
 
 当映射的 key 都是原子的时候,那么就可以直接写 %{a: 1,b: 2}
 
-<<<<<<< HEAD
 Enum.map([1,2,3],fn x->x end)
 
 Enum.map(%{:a=>1,2=>:b},fn {k,v}->[1,2] end)
 
 |> 管道
-=======
+
 # module
 
 ```elixir
@@ -317,4 +316,3 @@ IO.puts Blank.blank?(1)
 ```elixir
 for n<-[1,2,3,4],do: n*n
 ```
->>>>>>> 744cd7a64bd7f5bcfebb44ba66fdbb180f78e259
