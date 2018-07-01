@@ -211,3 +211,9 @@ Map.get(map,:a)
 Map.to_list(map)
 
 当映射的 key 都是原子的时候,那么就可以直接写 %{a: 1,b: 2}
+
+Enum.map([1,2,3],fn x->x end)
+
+Enum.map(%{:a=>1,2=>:b},fn {k,v}->[1,2] end)
+
+|> 管道
