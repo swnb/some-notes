@@ -46,6 +46,7 @@
 
     字符串也是二进制,和以获取字符串的序列大小,还有比如 String.upcase("cdcdcd")
 
+    String.codepoints "\ua213\u2121b"
 -   function
 
     add = fn a,b->a+b end
@@ -316,3 +317,16 @@ IO.puts Blank.blank?(1)
 ```elixir
 for n<-[1,2,3,4],do: n*n
 ```
+
+
+### advance
+
+erlang 模块
+
+:timer
+
+:os
+
+:timer.tc(function,[arg1,arg2,arg3])
+
+:os
