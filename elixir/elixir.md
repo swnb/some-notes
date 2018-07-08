@@ -47,6 +47,7 @@
     字符串也是二进制,和以获取字符串的序列大小,还有比如 String.upcase("cdcdcd")
 
     String.codepoints "\ua213\u2121b"
+
 -   function
 
     add = fn a,b->a+b end
@@ -318,7 +319,6 @@ IO.puts Blank.blank?(1)
 for n<-[1,2,3,4],do: n*n
 ```
 
-
 ### advance
 
 erlang 模块
@@ -330,3 +330,21 @@ erlang 模块
 :timer.tc(function,[arg1,arg2,arg3])
 
 :os
+
+### 宏
+
+    - quote 生成树结构
+    - unquote 修改语法树
+    - 前面两者在defmarco里面使用生成宏
+
+```elixir
+defmodule Meta do
+    defmacro sure(expr,do: func) do
+        quote do
+            if unquote(expr) do
+                unquote(func).()
+            end
+        end
+    end
+end
+```
