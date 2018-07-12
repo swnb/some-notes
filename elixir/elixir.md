@@ -348,3 +348,12 @@ defmodule Meta do
     end
 end
 ```
+
+### actor
+
+recive 是阻塞的，可以不用担心
+
+```elixir
+Process.register(pid,:pid)
+pid=Process.whereis(:pid)
+```
