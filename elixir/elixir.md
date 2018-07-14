@@ -357,3 +357,7 @@ recive 是阻塞的，可以不用担心
 Process.register(pid,:pid)
 pid=Process.whereis(:pid)
 ```
+
+### 列表
+
+列表是链表
