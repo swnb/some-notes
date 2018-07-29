@@ -1,6 +1,6 @@
 # curl
 
-curl是linux自带的一个网络工具，做网络请求是很方便的
+curl 是 linux 自带的一个网络工具，做网络请求是很方便的
 
 ### 简单连接和显示
 
@@ -10,7 +10,7 @@ curl是linux自带的一个网络工具，做网络请求是很方便的
 $ curl $URL/$IP
 ```
 
-保存这个网页到`tmp.html` 
+保存这个网页到`tmp.html`
 
 ```shell
 $ curl -o tmp.html $URL/$IP
@@ -31,20 +31,20 @@ $ curl -i $URL/$IP
 显示连接的详细信息包括**通信过程**
 
 ```shell
-$ curl -v $URL/$IP$ 
+$ curl -v $URL/$IP$
 ```
 
 要显示更详细的通讯过程
 
 ```shell
-$ curl --trace trace.txt $URL/$IP$ 
+$ curl --trace trace.txt $URL/$IP$
 ```
 
 ### 携带数据的连接
 
-#### post和get
+#### post 和 get
 
-get只提交数据
+get 只提交数据
 
 ```shell
 $ curl $URL?name=data&passwd=passwd
@@ -62,22 +62,15 @@ $ curl -X POST --data 'name=data' $URL
 $ curl --user-agent '[User Agent]' $URL
 ```
 
-cookie操作
+cookie 操作
 
 ```shell
 $ curl --cookie 'name=data' $URL
 ```
 
-使用cookie文件
+使用 cookie 文件
 
 ```shell
 $ curl -c cookies.txt $URL
 $ curl -b cookies.txt $URL
 ```
-
-
-
-
-
-
-
