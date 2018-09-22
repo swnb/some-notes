@@ -32,5 +32,6 @@ isPalindrome x = x == reverse x
 -- data NestList a = Elem a | List[NestList a]
 -- myFlatten 
 
-myCompress :: [a] -> [a]
-myCompress 
+-- myCompress :: [a] -> [a]
+-- myCompress 
+
