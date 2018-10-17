@@ -34,4 +34,3 @@ isPalindrome x = x == reverse x
 
 -- myCompress :: [a] -> [a]
 -- myCompress 
-

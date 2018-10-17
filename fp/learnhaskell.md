@@ -7,3 +7,14 @@ count :: A -> Float
 
 count x = x
 ```
+
+type
+
+```haskell
+data Person = Person {
+    name :: string,
+    age :: Int
+}
+
+name Person {name = "swnb", age = 100 }
+```
