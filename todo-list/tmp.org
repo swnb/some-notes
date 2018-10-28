@@ -1,0 +1,32 @@
+#+title: date notes
+
+* first note [0%]
+
+** TODO 研究语言 [0%]
++ TODO 研究haskell [15%]
++ TODO 研究lisp的代码,比如elisp或者common lisp的源代码的实现和原理,社区的相关的反映[5%]
++ 研究golang 的代码包的反射的实现和原理[15%]
+
+** TODO 研究emacs的的使用[10%]
+** TODO 深层次的研究socket的代码
+
+** TODO 前端的相关的研究
+** TODO react的核心比如diff算法，不可变数据等等
+** TODO 研究一个成功的api的典范[3%]
+** TODO 如何理解学习并且理解lisp [10%]
+** TODO 学习py requests 的源代码
+** TODO 企业级别的gin api 模版
+** TODO 学习代码的实现,比如lisp,这个可以放一放
+** TODO 学习日志模块
+** TODO 学习极客时间的golang的教程
+** TODO 学习如何配置config的文件,研究合理的config文件的编写模式 比如 .env文件,或者 .env.local 文件
+
+** TODO 今天要做的事情
+*** TODO 研究org-mode 的编码方式和一般的流水线的工作习惯
+
+* 已经完成的事件[100%]
+** DONE 第一个接口调转列表
+** DONE 研究emacs的配置视频 => 晚上开工
+** DONE 第二个接口的修缮工作
+** DONE 重构gin-template的所有工作
+** DONE 实现了使用无界面的chrome来抓取页面，并且打印出来

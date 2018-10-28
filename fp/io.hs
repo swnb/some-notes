@@ -1,13 +1,15 @@
-import Control.Monad
+#!/usr/bin/env runhaskell
+
+data Some = Double :++++ Double
+
+arounf :: Double -> Double -> Double
+arounf x y = x+y
+
+add :: Some -> Double
+add a = 
+    case a of ((:++++) x y) -> arounf x y
+
+data Pos = MakePosition{ getX :: Float , getY :: Float }
 
 main = do 
-    putStrLn "cdcd"
-    line <- getLine
-    putStrLn $ line ++ "enter"
-    when (line == "passwd") $ do 
-        putStr "next"
-        print ['a','r','r','a','y']
-    a <- getLine
-    print a
-    when (read a /= "cd") main
-    print "ext"
+    print $ add (100.20 :++++ 2.0)
