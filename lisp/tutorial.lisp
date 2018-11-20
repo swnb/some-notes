@@ -4,7 +4,7 @@
 ;; four-line code
 
 ;; example function
-(defun add (num)(+ num 1))
+(defun add (num) (+ num 1))
 
 ;; call
 (funcall #'add 1)
@@ -18,8 +18,10 @@
 ;; pattern match
 (multiple-value-bind (first second third) (multipleReturn) (values first))
 
+;; map reduce
+(defun sum (s) (reduce #'(lambda (a b) (+ a b)) s))
+
 ;; list
 (defparameter list' (list "1"  2  t))
-
 (nth 2 list')
 
