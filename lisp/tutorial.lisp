@@ -46,7 +46,28 @@
 
 (setf y (list x))
 
+(defun somefun (start end)
+  (do ((i start (+ i 1)))
+      ((> i end) i)
+    (format "%s" i)))
+
+(defun sumlist (list acc)
+    (if (null list)
+	acc
+	(sumlist (cdr list) (+ acc 1))))
 
 
+(somefun 2 100)
 
+(funcall #'sumlist '(1 21 212 1212 14 32 42315 415 21 1) 0)
+
+(defun copyList (list)
+  (if (null list)
+      nil
+      (cons (car list)
+	    (copyList (cdr list)))))
+
+(copyList '(1 2 3 4 5 2 1 2 4 3 1 2))
+
+(append 1 '2 '3)
 
