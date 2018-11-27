@@ -71,3 +71,12 @@
 
 (append 1 '2 '3)
 
+;; zip how -> to zip list  '(1 1 1 2 1 1 )
+(defun zip ()
+  ())
+
+(defun ad (x)
+  (progn (lambda (y) (+ x y))))
+
+
+
