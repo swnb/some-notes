@@ -4,6 +4,12 @@
     (define base-value null)
 ```
 
+```racket
+  ;; pair
+'(1 . 2)
+(cons 1 2)
+```
+
 ```lisp
 (struct pos (x y))
 (define my-point (pos 1 2))
@@ -27,4 +33,18 @@
 (define hs1 (hash '1 'dsa "key" 'cdscs))
 (hash-ref hs1 '1)
 (hash-remove hs1 '1)
+```
+
+```racket
+;; lambda
+ (λ (x)
+    (λ (y)
+      (+ x y)))
+
+ (((λ (x)
+    (λ (y)
+      (+ x y))) 1) 2)
+;; => 3
+
+(define foo (lambda (x) (begin x)))
 ```
