@@ -95,3 +95,7 @@
 (cons? '())
 (empty? '(1 2))
 ```
+
+```racket
+(display "a") ;; put "a" into io output
+```
