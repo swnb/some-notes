@@ -8,8 +8,7 @@ type ListNode struct {
 
 // LinkedList 链表
 type LinkedList struct {
-	head   *ListNode
-	length uint64
+	head *ListNode
 }
 
 // Remove node from list
@@ -46,28 +45,25 @@ func (l *LinkedList) Remove(v interface{}) bool {
 
 // RemoveN remove n in list
 func (l *LinkedList) RemoveN(n uint64) {
-	if n < 0 {
-		return
-	}
-
 	if n == 0 {
 		l.head = l.head.next
 	}
 
 	currentHead := l.head
-	for i := n + 1; currentHead.next != nil; i-- {
+	for i := n; currentHead.next != nil; i-- {
 		if i == 1 {
 			if currentHead.next != nil {
 				currentHead.next = currentHead.next.next
 			}
 			break
 		}
+		currentHead = currentHead.next
 	}
 }
 
 // FindMiddleNode for list
 func (l *LinkedList) FindMiddleNode() *ListNode {
-	if l.head == nil || l.head.next != nil {
+	if l.head == nil || l.head.next == nil {
 		return l.head
 	}
 
@@ -76,8 +72,7 @@ func (l *LinkedList) FindMiddleNode() *ListNode {
 	}
 
 	var slow, fast = l.head, l.head
-
-	for fast.next != nil || fast.next.next != nil {
+	for fast.next != nil && fast.next.next != nil {
 		fast, slow = fast.next.next, slow.next
 	}
 	return slow
