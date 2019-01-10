@@ -1,12 +1,12 @@
 const timeout = time =>
-	new Promise(resolve => setTimeout(resolve, time)).catch(console.error);
+	new Promise(resolve => void setTimeout(resolve, time)).catch(console.error);
 
 const sort = async arr => {
 	if (!Array.isArray(arr)) return [];
 
 	const result = [];
 	arr.forEach(async ele => {
-		await timeout(ele * 10);
+		await timeout(ele * arr.length);
 		result.push(ele);
 	});
 
