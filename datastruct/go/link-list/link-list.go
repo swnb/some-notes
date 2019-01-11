@@ -1,4 +1,4 @@
-package structure
+package linkedList
 
 // ListNode means node of list
 type ListNode struct {
