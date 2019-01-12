@@ -7,7 +7,7 @@ import (
 )
 
 // MaxLevel define the max level of skip-list
-const MaxLevel = 16
+const MaxLevel = 32
 
 type skipListNode struct {
 	value    interface{}
@@ -18,8 +18,6 @@ type skipListNode struct {
 // SkipList define the skip-list
 type SkipList struct {
 	head *skipListNode // head of skip-list
-
-	level int // the number of plies
 
 	length int // the length of list
 }
@@ -38,7 +36,6 @@ func createNode(key int32, v interface{}, height int) *skipListNode {
 func CreateSkipList() *SkipList {
 	return &SkipList{
 		head:   createNode(math.MinInt32, 0, MaxLevel),
-		level:  1,
 		length: 0,
 	}
 }
@@ -46,15 +43,8 @@ func CreateSkipList() *SkipList {
 // Len return the len of skip-list
 func (sl *SkipList) Len() int { return sl.length }
 
-// Level return the level of skip-list
-func (sl *SkipList) Level() int { return sl.level }
-
 // Insert insert the v into skipList
-func (sl *SkipList) Insert(key int32, v interface{}) int {
-	if v == nil {
-		return 1
-	}
-
+func (sl *SkipList) Insert(key int32, v interface{}) bool {
 	// current head for skip list
 	var cur = sl.head
 
@@ -62,10 +52,13 @@ func (sl *SkipList) Insert(key int32, v interface{}) int {
 
 	// 从数组的尾部到头部,也就是跳表的高层到底层
 	for i := MaxLevel - 1; i >= 0; i-- {
-		// 下面的操作都是对应这一层来说的
-
 		// 只要数组成员的对象的地址是存在的
 		for ; ; cur = cur.forwards[i] {
+			// 默认不能增加相同的key
+			if cur.key == key {
+				return false
+			}
+
 			// 这一层已经进入尾声,进入下一层
 			if cur.forwards[i] == nil || cur.forwards[i].key > key {
 				update[i] = cur
@@ -76,7 +69,7 @@ func (sl *SkipList) Insert(key int32, v interface{}) int {
 	// 当前的节点最小是1
 	height := 1
 	for i := 1; i <= MaxLevel; i++ {
-		if rand.Int31()%4 == 1 {
+		if rand.Int()%2 == 0 {
 			height++
 		}
 	}
@@ -85,22 +78,15 @@ func (sl *SkipList) Insert(key int32, v interface{}) int {
 
 	for i := 0; i < height; i++ {
 		// 更新每一层的节点
-		// fmt.Println(update[i])
-		// newNode.forwards[i] = update[i].forwards[i]
-		// update[i].forwards[i] = newNode
 		update[i].forwards[i], newNode.forwards[i] = newNode, update[i].forwards[i]
-	}
-
-	if height > sl.level {
-		sl.level = height
 	}
 
 	sl.length++
 
-	return 0
+	return true
 }
 
-// Find Find value by given key
+// Find search value by given key
 func (sl *SkipList) Find(key int32) interface{} {
 	var cur = sl.head
 
@@ -117,4 +103,37 @@ func (sl *SkipList) Find(key int32) interface{} {
 	}
 
 	return nil
+}
+
+// Delete delete the value bye key
+func (sl *SkipList) Delete(key int32) {
+	// 记录头节点
+	cur := sl.head
+	// 记录前一个节点
+	tracePreviousNode := [MaxLevel]*skipListNode{}
+	for i := MaxLevel - 1; i >= 0; i-- {
+		for ; ; cur = cur.forwards[i] {
+			if cur.forwards[i] == nil {
+				break
+			} else if cur.forwards[i].key == key {
+				tracePreviousNode[i] = cur
+				break
+			} else if cur.forwards[i].forwards[i] == nil || cur.forwards[i].forwards[i].key > key {
+				break
+			}
+		}
+	}
+
+	for i, v := range tracePreviousNode {
+		if v == nil {
+			continue
+		}
+		v.forwards[i] = v.forwards[i].forwards[i]
+	}
+}
+
+// Slice cut slice from skip list
+func (sl *SkipList) Slice(start int32, end int32) []interface{} {
+
+	return []interface{}{}
 }

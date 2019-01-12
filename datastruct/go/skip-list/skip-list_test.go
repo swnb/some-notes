@@ -1,18 +1,25 @@
 package skipList
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
-const sampleTotal = 100000
-
-func BenchmarkSkipList(b *testing.B) {
+func TestSkipList(t *testing.T) {
 	sl := CreateSkipList()
-	for i := 0; i <= sampleTotal; i++ {
-		sl.Insert(int32(i), i+111)
+
+	var i int32
+	for i = 0; i <= 10; i++ {
+		sl.Insert(i, i+100)
 	}
-	b.ResetTimer()
-	for i := 0; i <= b.N; i++ {
-		for i := 0; i <= sampleTotal; i++ {
-			sl.Find(int32(i))
-		}
+
+	sl.Delete(3)
+	sl.Delete(4)
+	sl.Delete(7)
+	sl.Delete(11)
+
+	i = 0
+	for i = 0; i <= 10; i++ {
+		fmt.Println(sl.Find(i))
 	}
 }
