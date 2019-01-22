@@ -21,3 +21,20 @@ var isOk= (int x){
 	return x ;
 };
 ```
+
+```dart
+class Vector{
+  final x = 1;
+  operator +(Vector v)=> x + v.x;
+
+  Map<Symbol,Vector> _cache = const Map();
+  final space(Symbol s) => _cache[s]??=Vector();
+
+}
+```
+
+```dart
+test()async{
+	await stream()
+}
+```
