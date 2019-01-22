@@ -38,3 +38,43 @@ test()async{
 	await stream()
 }
 ```
+
+https client for auto proxy;
+
+```dart
+import "dart:io";
+
+Future main() async {
+  final client = HttpClient();
+
+  var ua = client.userAgent;
+
+  client.userAgent = "Mozilla";
+
+  print(ua);
+
+  try {
+    client.findProxy =
+        (Uri uri) => HttpClient.findProxyFromEnvironment(uri, environment: {
+              "http_proxy": "http://127.0.0.1:1087",
+              "https_proxy": "http://127.0.0.1:1087",
+            });
+
+    var uri = Uri.parse("https://www.google.com");
+
+    print(uri);
+
+    final cc = await client.getUrl(uri);
+
+    final response = await cc.close();
+
+    print(response.headers);
+
+    final data = await response.drain();
+
+    print(data);
+  } catch (e) {
+    print(e);
+  }
+}
+```
