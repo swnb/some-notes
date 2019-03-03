@@ -108,3 +108,57 @@ let slices = &string[1..2];
 string.clear();
 println!("{}", slices);
 ```
+
+结构体就像 js 一样轻便
+
+```rust
+struct User {
+	name: String,
+	age: i32,
+	is_active: bool,
+}
+
+fn createUser(name: String, age: i32) -> User {
+	User {
+		name,
+		age,
+		is_active: false,
+	}
+}
+```
+
+解构不能在末尾有,号
+
+```rust
+let user = createUser(String::from("dadas"), 10);
+let user2 = User {
+	name: String::from("dads"),
+	..user
+};
+```
+
+tuple 的结构
+
+```rust
+struct Color(i32,i32,i32);
+
+let color Color(1,12,221);
+```
+
+方法
+
+```rust
+struct Color(i32, i32, i32);
+
+impl Color {
+	fn sum(&self) -> i32 {
+		self.0 + self.1 + self.2
+	}
+
+	fn new() -> Color {
+		Color(1, 121, 212)
+	}
+}
+
+Color::new();
+```
