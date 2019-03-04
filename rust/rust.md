@@ -162,3 +162,106 @@ impl Color {
 
 Color::new();
 ```
+
+enum
+
+枚举的用法真的是很广泛
+
+```rust
+enum Message { // 枚举的数据
+    Quit,	// 无类型
+    Move { x: i32, y: i32 }, // 匿名的结构体
+    Write(String),	// String 结构
+    ChangeColor(i32, i32, i32), // tuple 结构
+}
+```
+
+```rust
+enum Color{
+	Pink,  // 这是一个单元结构体
+	Yellow,
+	Some(String), // 这是一个字符串
+}
+
+let a:Color = Color::Pink;
+
+let string = match a{
+	Color::Pink=>"",
+	_ => {
+		println!("{}",string);
+		"da"
+	}
+};
+```
+
+if let 避免较长的匹配
+
+```rust
+let string = if let Color::Pink  = a {
+	""
+}else{
+	println!("{}",string);
+	"da"
+};
+```
+
+对于 rust 的模块系统 4 个关键字 `pub mod use super` 目录里面 mod.rs 就是默认的主文件;
+
+数据结构
+向量
+
+```rust
+let v = Vec::new();
+v.push(1);
+match v.get(1){
+	Some(number)=>println!("{}",number),
+	None => println!("none"),
+}
+```
+
+hashTable
+
+```rust
+let key = &String::from("key");
+let mut hashMap: HashMap<String, String> = HashMap::new();
+hashMap.remove(key); // 删
+let k = String::from("key");
+hashMap.insert(k, String::from("value")); // 增
+hashMap.get(key); // 查
+let k = String::from("key");
+hashMap.entry(k).or_insert(String::from("what is it")); // 改
+```
+
+rust 的泛型没有动态成本 ,在编译阶段就进行替换
+
+```rust
+struct SomePoint<T, U> {
+	x: T,
+	Y: U,
+}
+```
+
+类似接口的 trait
+
+```rust
+pub trait Person {
+	fn say(&self) -> String;
+}
+
+struct Man {
+	Name: String,
+	Age: i32,
+}
+
+impl Person for Man {
+	fn say(&self) -> String {
+		let name = self.Name.to_string();
+		name
+	}
+}
+
+fn notify<T: Person>(person: T) {
+	person.say();
+}
+
+```
