@@ -265,3 +265,29 @@ fn notify<T: Person>(person: T) {
 }
 
 ```
+
+function programming;
+
+```rust
+struct Counter {
+	value: i32,
+}
+
+impl Counter {
+	fn new() -> Counter {
+		Counter { value: 0 }
+	}
+}
+
+impl Iterator for Counter {
+	type Item = i32;
+	fn next(&mut self) -> Option<Self::Item> {
+		self.value += 1;
+		if self.value >= 100 {
+			return None;
+		}
+		Some(self.value)
+	}
+}
+
+```
