@@ -291,3 +291,76 @@ impl Iterator for Counter {
 }
 
 ```
+
+智能指针
+
+储存在堆上的数据
+
+```rust
+let num = Box::new(10);
+println!("{}",num);
+```
+
+如何生成单链表
+
+```rust
+struct Node<T>
+where
+	T: std::fmt::Debug,
+{
+	value: T,
+	next_pointer: NodePointer<T>,
+}
+
+impl<T> Node<T>
+where
+	T: std::fmt::Debug,
+{
+	fn new(value: T) -> Node<T> {
+		Node {
+			value,
+			next_pointer: NodePointer::Null,
+		}
+	}
+	fn link(mut before: Node<T>, after: Node<T>) -> Node<T> {
+		before.next_pointer = NodePointer::Pointer(Box::new(after));
+		before
+	}
+	fn print(&self) {
+		let Node {
+			value,
+			next_pointer,
+		} = self;
+		print!("{:?} -> ", value);
+		if let NodePointer::Pointer(Node) = next_pointer {
+			Node.print();
+		} else {
+			print!("{}", "null");
+		}
+	}
+}
+
+enum NodePointer<T>
+where
+	T: std::fmt::Debug,
+{
+	Pointer(Box<Node<T>>),
+	Null,
+}
+
+pub fn main() {
+	println!("{}", "+".repeat(100));
+	let long = 10;
+	let new = Node::new;
+	let cons = Node::link;
+	let mut a: Vec<i32> = (1..long).collect();
+	a.reverse();
+
+	let mut last = new(long);
+	for i in a {
+		last = cons(new(i), last);
+	}
+	last.print();
+}
+
+```
