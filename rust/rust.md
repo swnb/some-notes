@@ -398,8 +398,7 @@ fn lock(mutex: Arc<Mutex<i32>>, add: i32) {
 		let mut value = mutex.lock().unwrap();
 		*value += add;
 		println!("chane value into {}", value);
-		let record = *value; // 将这里的 * 去掉在看看代码;
-		record
+		*value; // 将这里的 * 去掉,输出会大不相同;
 	};
 	thread::sleep(Duration::from_millis(rand::random::<u8>() as u64));
 	println!("lock value {} release", record);
