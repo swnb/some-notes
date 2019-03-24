@@ -289,7 +289,6 @@ impl Iterator for Counter {
 		Some(self.value)
 	}
 }
-
 ```
 
 智能指针
@@ -364,3 +363,49 @@ pub fn main() {
 }
 
 ```
+
+互斥锁
+
+看如下的代码
+上锁可以保证锁的安全,解锁也是根据作用域来判断的,什么时候释放锁取决变量的释放
+
+```rust
+use std::{
+	sync::{Arc, Mutex},
+	thread,
+	time::Duration,
+};
+use rand;
+
+fn main() {
+	let mutex = Arc::new(Mutex::new(10));
+	let mut list = vec![];
+	for i in 0..10 {
+		let clone = mutex.clone();
+		let handler = thread::spawn(move || {
+			lock(clone, i);
+		});
+		list.push(handler);
+	}
+	for handler in list {
+		handler.join().unwrap();
+	}
+}
+
+fn lock(mutex: Arc<Mutex<i32>>, add: i32) {
+	println!("{}", "start to get lock");
+	let record = {
+		let mut value = mutex.lock().unwrap();
+		*value += add;
+		println!("chane value into {}", value);
+		let record = *value; // 将这里的 * 去掉在看看代码;
+		record
+	};
+	thread::sleep(Duration::from_millis(rand::random::<u8>() as u64));
+	println!("lock value {} release", record);
+}
+
+```
+
+上面的代码在 value 没有被析构之前是不会释放锁的,如果代码的注释的那一行代码去掉 \* ,那么在函数退出之前不会释放锁,这就是 rust ;
+不知道 rust 有没有类似 golang 的 defer 方案,可以避免死锁;
